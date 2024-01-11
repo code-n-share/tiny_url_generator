@@ -3,8 +3,9 @@
 ## Description
 Tiny Url Generator app using [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+![Alt text](diagram.tiff)
 
-## Docker Compose
+## Docker Compose
 
 ```bash
 $ docker-compose up --build

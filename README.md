@@ -6,6 +6,7 @@
 
 
 ## Docker Compose
+
 ```
 $ docker-compose up --build
 ```
@@ -40,6 +41,3 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-docker build -t nestjs-tiny-url-app .
-docker run --rm -p 3001:3001 nestjs-tiny-url-app

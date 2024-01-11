@@ -1,16 +1,22 @@
 version: '3.6'
 
 services:
-  tiny_url_db:
-    image: mongo:latest
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: dbPwd
-    ports:
-      - "27017-27017"
-  url_cache:
-    image: "redis:7.0.11-alpine3.18"
-    command: redis-server --requirepass cachePwd
-    ports:
-      - "6379:6379"
+  tiny_url_app:
+      ports:
+        - 3000:3000
+      build:
+        context: .
+        dockerfile: Dockerfile
+  # tiny_url_db:
+  #   image: mongo:latest
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: dbPwd
+  #   ports:
+  #     - "27017-27017"
+  # url_cache:
+  #   image: "redis:7.0.11-alpine3.18"
+  #   command: redis-server --requirepass cachePwd
+  #   ports:
+  #     - "6379:6379"

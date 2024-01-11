@@ -44,13 +44,13 @@ export class NotificationProcessor {
   
     await this.cacheManager.set(data.url, shortUrlCode);
    
-    await this.sendWebHookNotification(shortUrlCode, data.clientId);
+    await this.sendWebHookNotification(shortUrlCode, data.url, data.clientId);
   }
 
   // setting client1 as default if header is not set
-  async sendWebHookNotification(code, clientId = "client1", retries = 3, backoff = 300) {
+  async sendWebHookNotification(code, url, clientId = "client1", retries = 3, backoff = 300) {
 
-    const data = { "shortenedURL": `http://localhost:3000/url/${code}` };
+    const data = { "url": url, "shortenedURL": `http://localhost:3000/url/${code}` };
     this.httpService 
       .post(this.webHookUrls.get(clientId), data) 
       .subscribe({ 
@@ -61,7 +61,7 @@ export class NotificationProcessor {
           if(retries > 0) {
             console.log('retrying...'); 
             setTimeout(() => {
-              return this.sendWebHookNotification(code, clientId, retries - 1, backoff * 2)
+              return this.sendWebHookNotification(code, clientId, url, retries - 1, backoff * 2)
             }, backoff)
           }else{
             this.failedWebHookNotifications.set(clientId, data);

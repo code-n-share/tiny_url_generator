@@ -18,7 +18,7 @@ export class UrlController {
   async findOne(@Res() res, @Param('id') id: string) {
 
     const url = await this.urlService.findOne(id);
-    return res.send(url);
+    return res.send({"url": url});
     //return res.redirect(url)
   }
 }

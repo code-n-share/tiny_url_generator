@@ -1,13 +1,12 @@
 
 
 ## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Tiny Url Generator app using [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 
 ## Docker Compose
 
-```
+```bash
 $ docker-compose up --build
 ```
 
